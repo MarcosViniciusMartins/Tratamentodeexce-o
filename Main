@@ -1,0 +1,49 @@
+import java.util.ArrayList;
+import java.io.BufferedWriter; 
+import java.io.FileWriter;
+import java.io.File; 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner c = new Scanner(System.in);
+    try {
+      File arquivo = new File("pessoa.txt");
+      FileWriter fw = new FileWriter(arquivo);
+      BufferedWriter bw = new BufferedWriter(fw);
+      bw.write("ola");
+      bw.newLine();
+      bw.write("oasdlds");
+      bw.close();
+      fw.close();
+      FileReader fr = new FileReader(arquivo);
+      BufferedReader br = new BufferedReader(fr);
+      ArrayList<String> lista = new ArrayList();
+      while (br.ready()){
+        String linha = br.readLine();
+        lista.add(linha);
+      }
+      for (int i = 0; i < lista.size(); i++){
+        System.out.println(lista.get(i));
+      }
+
+      System.out.println("Digite seu nome:");
+      String nome = c.nextLine();
+
+      System.out.println("Digite sua idade:");
+      int idade = c.nextInt();
+
+      System.out.println("Digite seu cpf:");
+      int cpf = c.nextInt();
+
+    } catch (IOException ex) {
+      System.out.println("Erro ao acessar arquivo!");
+    } catch (Exception e) {
+      System.out.print("Erro:");
+    } finally {
+      System.out.print("Escreva novamente");
+    }
+  }
+}
